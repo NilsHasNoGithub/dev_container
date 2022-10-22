@@ -3,8 +3,11 @@ services:
   dev_container:
     image: dev_container
     container_name: dev_container
-    command: 'sleep infinity'
+    network_mode: host
+    command: 'sudo /usr/bin/sshd -D -p 32790'
     build: .
+    ports:
+     - "32790:32790"
     volumes:
       - type: bind
         source: .

@@ -13,9 +13,10 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
     neovim \
     ripgrep \
     fd \
-    cuda cuda-tools \
-    python python-click \
-    jdk-openjdk
+    openssh 
+    # cuda cuda-tools \
+    # python python-click \
+    # jdk-openjdk
 
 # Configure gpu
 ENV NVIDIA_VISIBLE_DEVICES all
@@ -34,6 +35,10 @@ RUN mkdir -p /home/user/.config
 COPY --chown=user ./config/zshrc /home/user/.zshrc
 COPY --chown=user ./config/starship /home/user/.config/starship
 COPY --chown=user ./config/condarc /home/user/.condarc
+COPY ./config/sshd_config /etc/ssh/sshd_config
+
+# Generate hostkeys for sshd
+RUN ssh-keygen -A
 
 # install yay   
 RUN su user -c 'git clone https://aur.archlinux.org/yay.git' && \

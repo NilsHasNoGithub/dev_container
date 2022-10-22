@@ -5,6 +5,10 @@ source "/usr/share/zsh/share/antigen.zsh"
 # Load oh-my-zsh library
 antigen use oh-my-zsh
 
+alias ls="exa"
+alias ll="exa -alh"
+alias tree="exa --tree"
+alias sudoedit="SUDO_EDITOR=/usr/bin/nvim command sudoedit"
 
 
 # Load bundles from external repos
@@ -22,5 +26,17 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=100000
 bindkey -e
+
+# zsh autosuggest config
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246"
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+# zsh syntax config
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+
 
 eval "$(starship init zsh)"

@@ -1,22 +1,25 @@
 FROM archlinux
 
-RUN pacman -Syyu --noconfirm \
+RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
+    pacman -Syyu --noconfirm --needed \
     git \
     zsh \
     sudo \
+    base \
     base-devel \
     wget \
     exa \
     starship \
     neovim \
     ripgrep \
-    fd
-    # cuda-tools \
-    # python python-click \
-    # jdk-openjdk \
-    # jdk11-openjdk \
-    # jdk8-openjdk 
+    fd \
+    cuda cuda-tools \
+    python python-click \
+    jdk-openjdk
 
+# Configure gpu
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 RUN useradd -m -G wheel -s /usr/bin/zsh user && \
     echo 'user:pass' | chpasswd && \

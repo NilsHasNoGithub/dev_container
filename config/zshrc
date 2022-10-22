@@ -1,0 +1,26 @@
+# START antigen
+
+source "/usr/share/zsh/share/antigen.zsh"
+
+# Load oh-my-zsh library
+antigen use oh-my-zsh
+
+
+
+# Load bundles from external repos
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+# END antigen
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=100000
+bindkey -e
+
+eval "$(starship init zsh)"

@@ -1,0 +1,29 @@
+format = "$all"
+
+[directory]
+read_only = " "
+truncation_symbol = ".../"
+
+[python]
+# format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\))]($style)"
+# symbol = "Py "
+
+[rust]
+# format = "[$symbol($version )]($style)"
+# symbol = "Rs "
+
+[package]
+disabled = true
+
+[time]
+disabled = true 
+
+[cmd_duration]
+format = " took [$duration]($style)"
+
+
+[rlang]
+disabled = true
+
+[conda]
+ignore_base = false

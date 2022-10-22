@@ -1,6 +1,5 @@
 FROM archlinux
 
-
 RUN pacman -Syyu --noconfirm \
     git \
     zsh \
@@ -8,12 +7,15 @@ RUN pacman -Syyu --noconfirm \
     base-devel \
     wget \
     exa \
-    cuda-tools \
-    python python-click \
-    base-devel \
-    jdk-openjdk \
-    jdk11-openjdk \
-    jdk8-openjdk 
+    starship \
+    neovim \
+    ripgrep \
+    fd
+    # cuda-tools \
+    # python python-click \
+    # jdk-openjdk \
+    # jdk11-openjdk \
+    # jdk8-openjdk 
 
 
 RUN useradd -m -G wheel -s /usr/bin/zsh user && \
@@ -25,12 +27,18 @@ RUN mkdir /workdir && chown user /workdir
 WORKDIR /workdir
 
 # Copy some configuration files
-COPY --chown=user ./zshrc /home/user/.zshrc
+RUN mkdir -p /home/user/.config
+COPY --chown=user ./config/zshrc /home/user/.zshrc
+COPY --chown=user ./config/starship /home/user/.config/starship
+COPY --chown=user ./config/condarc /home/user/.condarc
 
 # install yay   
 RUN su user -c 'git clone https://aur.archlinux.org/yay.git' && \
     cd yay && \
     su user -c 'makepkg -si --noconfirm'
+
+# install some yay packages
+RUN su user -c 'yay -S --noconfirm antigen oh-my-zsh-git'
 
 # install minconda3 and mamba
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
@@ -44,6 +52,7 @@ RUN su user -c 'wget https://sh.rustup.rs -O rustup_install.sh && sh rustup_inst
 
 
 WORKDIR /home/user
-RUN rm -rf /workdir
+RUN rm -rf /workdir /home/user/.cache
 
 USER user
+CMD ["/usr/bin/zsh"]

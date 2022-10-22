@@ -7,13 +7,13 @@ RUN pacman -Syyu --noconfirm \
     sudo \
     base-devel \
     wget \
-    exa
-    # cuda-tools \
-    # python python-click \
-    # base-devel \
-    # jdk-openjdk \
-    # jdk11-openjdk \
-    # jdk8-openjdk \
+    exa \
+    cuda-tools \
+    python python-click \
+    base-devel \
+    jdk-openjdk \
+    jdk11-openjdk \
+    jdk8-openjdk 
 
 
 RUN useradd -m -G wheel -s /usr/bin/zsh user && \

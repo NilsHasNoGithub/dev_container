@@ -1,0 +1,9 @@
+version: '3'
+services:
+  dev_container:
+    image: nils2142/dev_container
+    command: 'sleep infinity'
+    volumes:
+      - type: bind
+        source: .
+        target: /home/user/project

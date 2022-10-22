@@ -1,0 +1,6 @@
+version: '3'
+services:
+  dev_container:
+    image: dev_container
+    build: .
+    command: 'sleep infinity'

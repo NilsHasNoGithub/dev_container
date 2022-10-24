@@ -5,12 +5,6 @@ source "/usr/share/zsh/share/antigen.zsh"
 # Load oh-my-zsh library
 antigen use oh-my-zsh
 
-alias ls="exa"
-alias ll="exa -alh"
-alias tree="exa --tree"
-alias sudoedit="SUDO_EDITOR=/usr/bin/nvim command sudoedit"
-
-
 # Load bundles from external repos
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
@@ -40,3 +34,9 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
 
 eval "$(starship init zsh)"
+
+
+alias ls="exa"
+alias ll="exa -alh"
+alias tree="exa --tree"
+alias sudoedit="SUDO_EDITOR=/usr/bin/nvim command sudoedit"

@@ -1,5 +1,8 @@
 FROM archlinux
 
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
 RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
     pacman -Syyu --noconfirm --needed \
     git \
@@ -22,7 +25,7 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
-RUN useradd -m -G wheel -s /usr/bin/zsh user && \
+RUN useradd -m -G wheel -s /usr/bin/zsh user -u ${USER_ID} -g ${GROUP_ID} && \
     echo 'user:pass' | chpasswd && \
     echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheelsudo
 

@@ -34,6 +34,7 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 
 alias ls="exa"

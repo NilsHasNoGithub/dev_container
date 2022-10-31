@@ -13,6 +13,7 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
     exa \
     starship \
     neovim \
+    tmux \
     ripgrep \
     fd \
     libgl \

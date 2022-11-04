@@ -3,6 +3,7 @@
 set -e
 
 IMAGE_TAG=dev_container
+CONTAINER_NAME=dev_container0
 
 export DOCKER_CMD=${1:-podman}
 
@@ -12,6 +13,9 @@ fi
 
 
 $DOCKER_CMD build -t $IMAGE_TAG .
+
+
+[ "$($DOCKER_CMD ps -a | grep $CONTAINER_NAME)" ] && $DOCKER_CMD container rm $CONTAINER_NAME 
 
 $DOCKER_CMD run -it --rm \
     --mount type=bind,source="$(pwd)",target=/home/user/project \

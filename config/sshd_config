@@ -118,8 +118,8 @@ Subsystem	sftp	/usr/lib/ssh/sftp-server
 #
 
 PasswordAuthentication yes
+PermitRootLogin yes 
 
-# PermitRootLogin no
 # AllowUsers nils
 
 # X11Forwarding yes

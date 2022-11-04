@@ -30,6 +30,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 
 RUN useradd -m -G wheel -s /usr/bin/zsh user -u ${USER_ID} && \
+    chsh -s /usr/bin/zsh root && \
     echo 'user:pass' | chpasswd && \
     echo 'root:pass' | chpasswd && \
     echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheelsudo
@@ -66,8 +67,8 @@ RUN su user -c 'yay -S --noconfirm antigen oh-my-zsh-git'
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
     su user -c 'bash miniconda.sh -b -p $HOME/miniconda' && \
     su user -c '$HOME/miniconda/bin/conda init bash zsh' && \
-    su user -c '$HOME/miniconda/bin/conda install -c conda-forge mamba && $HOME/miniconda/bin/mamba init bash zsh' \
-    /home/user/miniconda/bin/conda init bash zsh \
+    su user -c '$HOME/miniconda/bin/conda install -c conda-forge mamba && $HOME/miniconda/bin/mamba init bash zsh' && \
+    /home/user/miniconda/bin/conda init bash zsh && \
     /home/user/miniconda/bin/mamba init bash zsh
 
 

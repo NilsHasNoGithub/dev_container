@@ -20,6 +20,7 @@ $DOCKER_CMD build -t $IMAGE_TAG .
 $DOCKER_CMD run -it --rm \
     --mount type=bind,source="$(pwd)",target=/home/user/project \
     --name dev_container0 \
+    --gpus all \
     $IMAGE_TAG \
     zsh
 

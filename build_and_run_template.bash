@@ -2,6 +2,8 @@
 
 set -e
 
+IMAGE_TAG=dev_container
+
 export DOCKER_CMD=${1:-podman}
 
 if ! command -v $DOCKER_CMD &> /dev/null; then
@@ -9,11 +11,12 @@ if ! command -v $DOCKER_CMD &> /dev/null; then
 fi
 
 
+$DOCKER_CMD build -t $IMAGE_TAG .
 
 $DOCKER_CMD run -it --rm \
     --mount type=bind,source="$(pwd)",target=/home/user/project \
     --name dev_container0 \
-    dev_container \
+    $IMAGE_TAG \
     zsh
 
 # $DOCKER_CMD -it --rm \

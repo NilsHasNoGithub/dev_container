@@ -19,7 +19,7 @@ $DOCKER_CMD run -it --rm \
     $IMAGE_TAG \
     zsh
 
-# $DOCKER_CMD -it --rm \
+# $DOCKER_CMD run -it --rm \
 #     --mount type=bind,source="$(pwd)",target=/home/user/project \
 #     -p 32790:32790 \
 #     --name dev_container0 \

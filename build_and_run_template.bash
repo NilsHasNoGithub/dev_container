@@ -17,6 +17,10 @@ $DOCKER_CMD build -t $IMAGE_TAG .
 
 [ "$($DOCKER_CMD ps -a | grep $CONTAINER_NAME)" ] && $DOCKER_CMD container rm $CONTAINER_NAME 
 
+# Some other interesting mountpoints:
+# --mount type=bind,source=$HOME/.zsh_history,target=/home/user/.histfile
+# --mount type=bind,source=$HOME/.zsh_history,target=/root/.histfile
+
 $DOCKER_CMD run -it --rm \
     --mount type=bind,source="$(pwd)",target=/home/user/project \
     --name dev_container0 \

@@ -2,7 +2,7 @@
 
 set -e
 
-IMAGE_TAG=dev_container
+IMAGE_TAG=localhost/dev_container
 CONTAINER_NAME=dev_container0
 
 export DOCKER_CMD=${1:-podman}

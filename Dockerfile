@@ -2,8 +2,8 @@ FROM archlinux
 
 ARG USER_ID=1000
 
-# RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
-RUN pacman -Syyu --noconfirm --needed \
+RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
+    pacman -Syyu --noconfirm --needed \
     git \
     zsh \
     sudo \

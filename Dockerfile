@@ -20,7 +20,8 @@ RUN pacman -Syyu --noconfirm --needed \
     libgl \
     zoxide \
     openssh \
-    cuda cuda-tools
+    cuda cuda-tools \
+    nodejs
     # python python-click \
     # jdk-openjdk
 

@@ -23,7 +23,7 @@ $DOCKER_CMD build -t $IMAGE_TAG .
 
 $DOCKER_CMD run -it --rm \
     --mount type=bind,source="$(pwd)",target=/home/user/project \
-    --name dev_container0 \
+    --name $CONTAINER_NAME \
     --gpus all \
     $IMAGE_TAG \
     zsh
@@ -31,6 +31,6 @@ $DOCKER_CMD run -it --rm \
 # $DOCKER_CMD run -it --rm \
 #     --mount type=bind,source="$(pwd)",target=/home/user/project \
 #     -p 32790:32790 \
-#     --name dev_container0 \
+#     --name $CONTAINER_NAME \
 #     dev_container \
 #     'sudo /usr/bin/sshd -D -p 32790'

@@ -17,10 +17,11 @@ $DOCKER_CMD build -t $IMAGE_TAG .
 
 [ "$($DOCKER_CMD ps -a | grep $CONTAINER_NAME)" ] && $DOCKER_CMD container rm $CONTAINER_NAME 
 
-# Some other interesting mountpoints:
+### Some other interesting mountpoints:
 # --mount type=bind,source=$HOME/.zsh_history,target=/home/user/.histfile
 # --mount type=bind,source=$HOME/.zsh_history,target=/root/.histfile
 
+### shell setup 
 $DOCKER_CMD run -it --rm \
     --mount type=bind,source="$(pwd)",target=/project \
     --name $CONTAINER_NAME \
@@ -28,9 +29,18 @@ $DOCKER_CMD run -it --rm \
     $IMAGE_TAG \
     zsh
 
-# $DOCKER_CMD run -it --rm \
+### SSH setup
+# $DOCKER_CMD run -d --rm \
 #     --mount type=bind,source="$(pwd)",target=/project \
 #     -p 32790:32790 \
 #     --name $CONTAINER_NAME \
-#     dev_container \
+#     $IMAGE_TAG \
 #     /usr/bin/sshd -D -p 32790
+
+# stop_container() {
+#     echo -e "\n\nStopping container\n\n"
+#     $DOCKER_CMD stop $CONTAINER_NAME
+# }
+
+# trap stop_container SIGINT
+# sleep infinity

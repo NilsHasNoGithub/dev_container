@@ -33,4 +33,4 @@ $DOCKER_CMD run -it --rm \
 #     -p 32790:32790 \
 #     --name $CONTAINER_NAME \
 #     dev_container \
-#     'sudo /usr/bin/sshd -D -p 32790'
+#     '/usr/bin/sshd -D -p 32790'

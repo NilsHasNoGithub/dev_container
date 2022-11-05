@@ -22,14 +22,14 @@ $DOCKER_CMD build -t $IMAGE_TAG .
 # --mount type=bind,source=$HOME/.zsh_history,target=/root/.histfile
 
 $DOCKER_CMD run -it --rm \
-    --mount type=bind,source="$(pwd)",target=/home/user/project \
+    --mount type=bind,source="$(pwd)",target=/project \
     --name $CONTAINER_NAME \
     --gpus all \
     $IMAGE_TAG \
     zsh
 
 # $DOCKER_CMD run -it --rm \
-#     --mount type=bind,source="$(pwd)",target=/home/user/project \
+#     --mount type=bind,source="$(pwd)",target=/project \
 #     -p 32790:32790 \
 #     --name $CONTAINER_NAME \
 #     dev_container \

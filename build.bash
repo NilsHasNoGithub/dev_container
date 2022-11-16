@@ -1,8 +1,11 @@
 #/usr/bin/env bash
 
+IMAGE_TAG=localhost/dev_container
+
 set -e
 
-IMAGE_TAG=localhost/dev_container
+script_dir=$(dirname $0)
+cd $script_dir
 
 export DOCKER_CMD=${1:-podman}
 
